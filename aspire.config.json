@@ -1,0 +1,5 @@
+{
+  "appHost": {
+    "path": "GokeBankApp.AppHost/GokeBankApp.AppHost.csproj"
+  }
+}
