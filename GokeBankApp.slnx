@@ -2,6 +2,8 @@
   <Folder Name="/_/">
     <Project Path="Code/Code.csproj" Id="7cf09583-281a-40a6-9219-ad5f43684423" />
   </Folder>
+  <Project Path="Goke.Bank.Web/Goke.Bank.Web.Client/Goke.Bank.Web.Client.csproj" />
+  <Project Path="Goke.Bank.Web/Goke.Bank.Web/Goke.Bank.Web.csproj" />
   <Project Path="Goke.Bank.WebServer/Goke.Bank.WebServer.Client/Goke.Bank.WebServer.Client.csproj" />
   <Project Path="Goke.Bank.WebServer/Goke.Bank.WebServer/Goke.Bank.WebServer.csproj" />
   <Project Path="GokeBankApp.AppHost/GokeBankApp.AppHost.csproj" Id="f794e7e9-de78-41f4-a1c7-c1e175c83efc" />

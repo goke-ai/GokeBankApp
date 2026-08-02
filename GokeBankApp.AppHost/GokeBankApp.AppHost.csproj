@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Goke.Bank.WebServer\Goke.Bank.WebServer\Goke.Bank.WebServer.csproj" />
+    <ProjectReference Include="..\Goke.Bank.Web\Goke.Bank.Web\Goke.Bank.Web.csproj" />
   </ItemGroup>
 
 </Project>
