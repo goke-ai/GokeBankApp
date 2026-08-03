@@ -72,6 +72,11 @@ app.MapDefaultEndpoints();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    // Apply migrations & create database if needed at startup
+    using (var scope = app.Services.CreateScope())
+    {
+        await ApplicationSeeder.SeedAllAsync(scope.ServiceProvider);
+    }
     app.UseWebAssemblyDebugging();
     app.UseMigrationsEndPoint();
 }
