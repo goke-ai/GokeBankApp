@@ -6,8 +6,6 @@ builder.AddProject<Projects.Goke_Bank_Web>("goke-bank-web");
 
 builder.AddProject<Projects.Goke_Bank_Hyb>("goke-bank-hyb");
 
-builder.AddProject<Projects.Goke_Bank_Hyb_Web>("goke-bank-hyb-web");
-
 builder.AddProject<Projects.Goke_Bank_App>("goke-bank-app");
 
 builder.Build().Run();

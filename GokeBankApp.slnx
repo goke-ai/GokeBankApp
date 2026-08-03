@@ -5,9 +5,7 @@
   <Project Path="Goke.Bank.App/Goke.Bank.App.csproj">
     <Deploy Solution="Debug|*" />
   </Project>
-  <Project Path="Goke.Bank.Hyb/Goke.Bank.Hyb.Shared/Goke.Bank.Hyb.Shared.csproj" />
-  <Project Path="Goke.Bank.Hyb/Goke.Bank.Hyb.Web/Goke.Bank.Hyb.Web.csproj" />
-  <Project Path="Goke.Bank.Hyb/Goke.Bank.Hyb/Goke.Bank.Hyb.csproj">
+  <Project Path="Goke.Bank.Hyb/Goke.Bank.Hyb.csproj">
     <Deploy Solution="Debug|*" />
   </Project>
   <Project Path="Goke.Bank.Web.ShareUI/Goke.Bank.Web.ShareUI.csproj" />
