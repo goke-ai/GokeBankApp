@@ -20,4 +20,10 @@ public partial class MainPage : ContentPage
 
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
+
+    private void OnLoginPageClicked(object sender, EventArgs e)
+    {
+		Shell.Current.GoToAsync("//LoginPage");
+
+    }
 }

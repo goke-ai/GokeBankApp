@@ -66,8 +66,37 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include="appsettings.Development.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="appsettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.10" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="Goke.Core">
+	    <HintPath>..\..\goke-apps\Goke.Core\bin\Release\net10.0\Goke.Core.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Goke.Services">
+	    <HintPath>..\..\goke-apps\Goke.Services\bin\Debug\net10.0\Goke.Services.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\Account\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
