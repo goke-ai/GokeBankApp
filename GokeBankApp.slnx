@@ -2,7 +2,9 @@
   <Folder Name="/_/">
     <Project Path="Code/Code.csproj" Id="7cf09583-281a-40a6-9219-ad5f43684423" />
   </Folder>
-  <Project Path="Goke.Bank.App/Goke.Bank.App.csproj" />
+  <Project Path="Goke.Bank.App/Goke.Bank.App.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
   <Project Path="Goke.Bank.Hyb/Goke.Bank.Hyb.Shared/Goke.Bank.Hyb.Shared.csproj" />
   <Project Path="Goke.Bank.Hyb/Goke.Bank.Hyb.Web/Goke.Bank.Hyb.Web.csproj" />
   <Project Path="Goke.Bank.Hyb/Goke.Bank.Hyb/Goke.Bank.Hyb.csproj">
