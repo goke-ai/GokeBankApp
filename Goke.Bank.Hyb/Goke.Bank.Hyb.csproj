@@ -67,9 +67,28 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Content Remove="appsettings.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="appsettings.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="10.0.10" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.10" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="10.0.90" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Goke.Core">
+        <HintPath>..\..\goke-apps\Goke.SharedUI\bin\Debug\net10.0\Goke.Core.dll</HintPath>
+      </Reference>
+      <Reference Include="Goke.Services">
+        <HintPath>..\..\goke-apps\Goke.Services\bin\Debug\net10.0\Goke.Services.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>
