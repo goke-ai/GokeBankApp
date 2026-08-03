@@ -427,6 +427,4 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-/Code/Code.csproj
-/Code/Code.csproj
-/Code/Properties/AssemblyInfo.cs
+/Code
