@@ -13,4 +13,17 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Goke.Core">
+      <HintPath>..\..\..\goke-apps\Goke.Core\bin\Release\net10.0\Goke.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Goke.Services">
+      <HintPath>..\..\..\goke-apps\Goke.Services\bin\Debug\net10.0\Goke.Services.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Endpoints\" />
+  </ItemGroup>
+
 </Project>
