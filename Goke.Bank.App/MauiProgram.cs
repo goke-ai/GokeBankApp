@@ -1,8 +1,13 @@
-﻿using Goke.Bank.App.Services;
+﻿using CommunityToolkit.Maui;
+using Fonts;
+using Goke.Bank.App.PageModels;
+using Goke.Bank.App.Pages;
+using Goke.Bank.App.Services;
 using Goke.Core.Interfaces;
 using Goke.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Toolkit.Hosting;
 using System.Reflection;
 
 namespace Goke.Bank.App;
@@ -13,12 +18,44 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+            .UseMauiApp<App>()
+            // Initialize the .NET MAUI Community Toolkit by adding the below line of code
+            .UseMauiCommunityToolkit()
+            // Initialize the Syncfusion .NET MAUI Toolkit by adding the below line of code
+            .ConfigureSyncfusionToolkit()
+            // Maui Handlers are used to customize the behavior of controls in .NET MAUI.
+            .ConfigureMauiHandlers(handlers =>
+            {
+#if WINDOWS
+                // Customize the behavior of the CollectionView control on Windows platform
+				Microsoft.Maui.Controls.Handlers.Items.CollectionViewHandler.Mapper.AppendToMapping("KeyboardAccessibleCollectionView", (handler, view) =>
+				{
+					handler.PlatformView.SingleSelectionFollowsFocus = false;
+				});
+
+				//Microsoft.Maui.Handlers.ContentViewHandler.Mapper.AppendToMapping(nameof(Pages.Controls.CategoryChart), (handler, view) =>
+				//{
+				//	if (view is Pages.Controls.CategoryChart && handler.PlatformView is Microsoft.Maui.Platform.ContentPanel contentPanel)
+				//	{
+				//		contentPanel.IsTabStop = true;
+				//	}
+				//});
+#endif
+            })
+            // After initializing the .NET MAUI Community Toolkit, optionally add additional fonts
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("SegoeUI-Semibold.ttf", "SegoeSemibold");
+                fonts.AddFont("FluentSystemIcons-Regular.ttf", FluentUI.FontFamily);
+            });
+
+#if DEBUG
+        builder.Logging.AddDebug();
+        builder.Services.AddLogging(configure => configure.AddDebug());
+#endif
+
 
         //+authentication
         // Load the embedded appsettings.json file
@@ -55,17 +92,23 @@ public static class MauiProgram
         // Add app services
         builder.Services.AddSingleton<TokenStorage>();
         // This is our custom provider
-        builder.Services.AddScoped<MauiAuthenticationStateProvider>();
+        // builder.Services.AddSingleton<MauiAuthenticationStateProvider>();
         // Use our custom provider when the app needs an AuthenticationStateProvider
         //builder.Services.AddScoped<AuthenticationStateProvider>(s => (MauiAuthenticationStateProvider)s.GetRequiredService<MauiAuthenticationStateProvider>());
-        builder.Services.AddScoped<IAuthenticationService>(s => s.GetRequiredService<MauiAuthenticationStateProvider>());
+        //builder.Services.AddSingleton<IAuthenticationService>(s => s.GetRequiredService<MauiAuthenticationStateProvider>());
+        builder.Services.AddSingleton<IAuthenticationService, MauiAuthenticationStateProvider>();
 
         //-authentication
 
-#if DEBUG
-        builder.Logging.AddDebug();
-#endif
+        // models
+        builder.Services.AddSingleton<ModalErrorHandler>();
 
-		return builder.Build();
+        // page models
+        builder.Services.AddSingleton<MainPageModel>();
+
+        // pages
+        builder.Services.AddTransient<MainPage>();
+
+        return builder.Build();
 	}
 }

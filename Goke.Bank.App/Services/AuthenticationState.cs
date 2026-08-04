@@ -2,13 +2,10 @@
 
 namespace Goke.Bank.App.Services
 {
-    public class AuthenticationState
+    public class AuthenticationState(ClaimsPrincipal user)
     {
-        private ClaimsPrincipal defaultUser;
+        private ClaimsPrincipal user = user;
 
-        public AuthenticationState(ClaimsPrincipal defaultUser)
-        {
-            this.defaultUser = defaultUser;
-        }
+        public ClaimsPrincipal User => user;
     }
 }

@@ -1,4 +1,8 @@
 <Solution>
+  <Folder Name="/Libs/">
+    <Project Path="../goke-apps/Goke.Core/Goke.Core.csproj" />
+    <Project Path="../goke-apps/Goke.Services/Goke.Services.csproj" />
+  </Folder>
   <Folder Name="/_/">
     <Project Path="Code/Code.csproj" Id="7cf09583-281a-40a6-9219-ad5f43684423" />
   </Folder>

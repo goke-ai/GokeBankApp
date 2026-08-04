@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android</TargetFrameworks>
@@ -78,23 +78,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="15.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.10" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.10" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.10" />
+		<PackageReference Include="Syncfusion.Maui.Toolkit" Version="1.0.10" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="Goke.Core">
-	    <HintPath>..\..\goke-apps\Goke.Core\bin\Release\net10.0\Goke.Core.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Goke.Services">
-	    <HintPath>..\..\goke-apps\Goke.Services\bin\Debug\net10.0\Goke.Services.dll</HintPath>
-	  </Reference>
+	  <ProjectReference Include="..\..\goke-apps\Goke.Core\Goke.Core.csproj" />
+	  <ProjectReference Include="..\..\goke-apps\Goke.Services\Goke.Services.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Pages\Account\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Admin\AdminPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\WeatherPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

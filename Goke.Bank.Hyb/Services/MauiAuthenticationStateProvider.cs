@@ -61,6 +61,59 @@ namespace Goke.Bank.Hyb.Services
             return await UpdateAndValidateAccessTokenAsync();
         }
 
+        public async Task<bool> IsInRoleAsync(string role)
+        {
+            if (currentAuthState == defaultAuthState)
+            {
+                return false;
+            }
+            ClaimsPrincipal user = (await currentAuthState).User;
+            return user.Identity?.IsAuthenticated == true && user.IsInRole(role);
+        }
+
+
+        //public async Task<bool> IsInRoleAsync(string role)
+        //{
+        //    if (string.IsNullOrWhiteSpace(role))
+        //    {
+        //        return false;
+        //    }
+        //    if (!await UpdateAndValidateAccessTokenAsync() || accessToken is null)
+        //    {
+        //        return false;
+        //    }
+        //    var userInfo = await GetAuthenticatedUserAsync(accessToken.LoginResponse.AccessToken);
+        //    if (userInfo is null)
+        //    {
+        //        LogoutCore("Your session expired. Sign in again.");
+        //        return false;
+        //    }
+        //    return userInfo.Roles?.Contains(role, StringComparer.OrdinalIgnoreCase) ?? false;
+        //}
+
+        // HasClaimAsync checks if the user has a specific claim in their access token
+        public async Task<bool> HasClaimAsync(string claimType, string claimValue)
+        {
+            if (currentAuthState == defaultAuthState)
+            {
+                return false;
+            }
+            ClaimsPrincipal user = (await currentAuthState).User;
+            return user.Identity?.IsAuthenticated == true && user.HasClaim(c => c.Type.Equals(claimType, StringComparison.OrdinalIgnoreCase) && c.Value.Equals(claimValue, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public async Task<bool> HasClaimAsync(Predicate<Claim> predicate)
+        {
+            if (currentAuthState == defaultAuthState)
+            {
+                return false;
+            }
+            ClaimsPrincipal user = (await currentAuthState).User;
+            return user.Identity?.IsAuthenticated == true && user.Claims.Any(c => predicate(c));
+        }
+
+        
+
         public async Task<AccessTokenInfo?> GetAccessTokenInfoAsync()
         {
             if (await UpdateAndValidateAccessTokenAsync())
