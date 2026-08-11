@@ -1,12 +1,14 @@
 using Goke.Bank.App.Controls;
 using Goke.Bank.App.PageModels;
+using Goke.Core.Authorization;
 
 namespace Goke.Bank.App.Pages.Account;
 
-public partial class LoginPage : ScrollViewPage
+[Authorize]
+public partial class LogoutPage : AuthorizePage
 {
 
-    public LoginPage(LoginPageModel model)
+    public LogoutPage(LogoutPageModel model)
 	{
 		InitializeComponent();
         BindingContext = model;

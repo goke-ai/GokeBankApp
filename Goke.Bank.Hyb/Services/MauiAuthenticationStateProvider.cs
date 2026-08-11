@@ -10,7 +10,8 @@ using Goke.Core.Enums;
 using Goke.Core.Interfaces;
 using Goke.Core.Models;
 using Goke.Services;
-using Goke.Services.Authentication;
+using Goke.Core.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Goke.Bank.Hyb.Services
 {
@@ -19,7 +20,9 @@ namespace Goke.Bank.Hyb.Services
     /// The class handles user login, logout, and token validation, including refreshing tokens when they are close to expiration.
     /// It uses secure storage to save and retrieve tokens, ensuring that users do not need to log in every time.
     /// </summary>
-    public class MauiAuthenticationStateProvider(AuthApiClient authApiClient, ILogger<MauiAuthenticationStateProvider> logger) : AuthenticationStateProvider, IAuthenticationService
+    public class MauiAuthenticationStateProvider(AuthApiClient authApiClient,
+        IAuthorizationService authorizationService,
+        ILogger<MauiAuthenticationStateProvider> logger) : AuthenticationStateProvider, IAuthenticationService
     {
         //TODO: Place this in AppSettings or Client config file
         private const string AuthenticationType = "Custom authentication";
@@ -91,20 +94,19 @@ namespace Goke.Bank.Hyb.Services
         //    return userInfo.Roles?.Contains(role, StringComparer.OrdinalIgnoreCase) ?? false;
         //}
 
-        // HasClaimAsync checks if the user has a specific claim in their access token
-        public async Task<bool> HasClaimAsync(string claimType, string claimValue)
+        public async Task<bool> HasClaimAsync(string claimType, string? claimValue = null)
         {
-            if (currentAuthState == defaultAuthState)
+            if (string.IsNullOrWhiteSpace(claimType) || currentAuthState == defaultAuthState)
             {
                 return false;
             }
             ClaimsPrincipal user = (await currentAuthState).User;
-            return user.Identity?.IsAuthenticated == true && user.HasClaim(c => c.Type.Equals(claimType, StringComparison.OrdinalIgnoreCase) && c.Value.Equals(claimValue, StringComparison.OrdinalIgnoreCase));
+            return user.Identity?.IsAuthenticated == true && user.HasClaim(c => c.Type.Equals(claimType, StringComparison.OrdinalIgnoreCase) && (claimValue == null || c.Value.Equals(claimValue, StringComparison.OrdinalIgnoreCase)));
         }
 
         public async Task<bool> HasClaimAsync(Predicate<Claim> predicate)
         {
-            if (currentAuthState == defaultAuthState)
+            if (predicate == null || currentAuthState == defaultAuthState)
             {
                 return false;
             }
@@ -112,7 +114,18 @@ namespace Goke.Bank.Hyb.Services
             return user.Identity?.IsAuthenticated == true && user.Claims.Any(c => predicate(c));
         }
 
-        
+        public async Task<bool> AuthorizePolicyAsync(string policyName)
+        {
+            if (string.IsNullOrWhiteSpace(policyName) || currentAuthState == defaultAuthState)
+            {
+                return false;
+            }
+
+            ClaimsPrincipal user = (await currentAuthState).User;
+            var authResult = await authorizationService.AuthorizeAsync(user, policyName);
+
+            return authResult.Succeeded;
+        }
 
         public async Task<AccessTokenInfo?> GetAccessTokenInfoAsync()
         {

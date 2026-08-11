@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace Goke.Bank.App;
+﻿namespace Goke.Bank.App;
 
 public partial class App : Application
 {

@@ -6,6 +6,7 @@ using Goke.Bank.WebServer.Components;
 using Goke.Bank.WebServer.Components.Account;
 using Goke.Bank.WebServer.Data;
 using Goke.Bank.WebServer.Endpoints;
+using Goke.Bank.WebServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,6 +66,10 @@ builder.Services.AddIdentityApiEndpoints<ApplicationUser>(options =>
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
+//di app services
+builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
@@ -104,5 +109,9 @@ app.MapIdentityEndpoints();
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
+
+
+// Add custom endpoints
+app.MapWeatherForecastEndpoints();
 
 app.Run();

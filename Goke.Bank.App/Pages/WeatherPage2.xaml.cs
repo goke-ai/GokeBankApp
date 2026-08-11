@@ -1,12 +1,11 @@
 using Goke.Bank.App.Controls;
 using Goke.Bank.App.PageModels;
-using Goke.Core.Authorization;
 
 namespace Goke.Bank.App.Pages;
 
-public partial class WeatherPage : ScrollViewPage
+public partial class WeatherPage2 : AuthorizePage
 {
-	public WeatherPage(WeatherPageModel vModel)
+	public WeatherPage2(WeatherPageModel vModel)
 	{
 		InitializeComponent();
 		BindingContext = vModel;

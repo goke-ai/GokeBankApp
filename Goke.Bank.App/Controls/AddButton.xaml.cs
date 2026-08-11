@@ -1,4 +1,4 @@
-namespace Goke.Bank.App.Pages.Controls;
+namespace Goke.Bank.App.Controls;
 
 public partial class AddButton
 {

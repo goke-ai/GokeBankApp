@@ -23,10 +23,4 @@
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.17.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Goke.Core">
-      <HintPath>..\..\..\goke-apps\Goke.Core\bin\Release\net10.0\Goke.Core.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

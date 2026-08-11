@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using Fonts;
 using Goke.Bank.App.PageModels;
-using Goke.Bank.App.Pages;
 using Goke.Bank.App.Services;
+using Goke.Core.Authorization;
 using Goke.Core.Interfaces;
 using Goke.Services;
 using Microsoft.Extensions.Configuration;
@@ -100,14 +100,32 @@ public static class MauiProgram
 
         //-authentication
 
+        // Add authorization policies
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("AdminOnlyPolicy", policy =>
+                policy.RequireRole("Administrators"));
+
+            options.AddPolicy("DepartmentITPolicy", policy =>
+                policy.RequireClaim("Department", "IT"));
+
+            options.AddPolicy("ProfileEditPolicy", policy =>
+                policy.RequirePermission("Profile.Edit"));
+        });
+
+        
         // models
         builder.Services.AddSingleton<ModalErrorHandler>();
 
         // page models
         builder.Services.AddSingleton<MainPageModel>();
+        builder.Services.AddSingleton<LoginPageModel>();
+        builder.Services.AddSingleton<LogoutPageModel>();
+        builder.Services.AddSingleton<WeatherPageModel>();
+        builder.Services.AddSingleton<CounterPageModel>();
 
         // pages
-        builder.Services.AddTransient<MainPage>();
+        //builder.Services.AddTransient<MainPage>();
 
         return builder.Build();
 	}

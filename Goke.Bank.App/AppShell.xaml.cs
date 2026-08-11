@@ -1,5 +1,9 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using Goke.Bank.App.Pages;
+using Goke.Bank.App.Pages.Account;
+using Goke.Bank.App.Pages.Admin;
+using Goke.Bank.App.Services;
 using Goke.Core.Interfaces;
 using Font = Microsoft.Maui.Font;
 
@@ -7,16 +11,95 @@ namespace Goke.Bank.App;
 
 public partial class AppShell : Shell
 {
-    readonly IAuthenticationService authService;
+    private readonly IAuthenticationService authService;
+    private readonly MauiAuthenticationStateProvider? authStateProvider;
 
-	public AppShell()
+
+    public AppShell()
 	{
         authService = ServiceHelper.GetService<IAuthenticationService>();
+        authStateProvider = authService as MauiAuthenticationStateProvider;
 
         InitializeComponent();
 
         var currentTheme = Application.Current!.RequestedTheme;
         ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+
+        Loaded += AppShell_Loaded;
+
+        if (authStateProvider is not null)
+        {
+            authStateProvider.AuthenticationStateChanged += AuthStateProvider_AuthenticationStateChanged;
+        }
+    }
+
+    private async void AppShell_Loaded(object? sender, EventArgs e)
+    {
+        await RefreshMenuAsync();
+    }
+
+    private void AuthStateProvider_AuthenticationStateChanged(object? sender, EventArgs e)
+    {
+        MainThread.BeginInvokeOnMainThread(async () => await RefreshMenuAsync());
+    }
+
+    public async Task RefreshMenuAsync()
+    {
+        // await BuildMenuAsync();
+
+        var isAuthenticated = await authService.IsAuthenticatedAsync();
+        var isAdmin = isAuthenticated && await authService.IsInRoleAsync("Administrators");
+
+        HomeItem.FlyoutItemIsVisible = true;
+        CounterItem.FlyoutItemIsVisible = isAuthenticated;
+        WeatherItem.FlyoutItemIsVisible = isAuthenticated;
+        AuthItem.FlyoutItemIsVisible = isAuthenticated;
+        AdminItem.FlyoutItemIsVisible = isAdmin;
+
+        LoginItem.FlyoutItemIsVisible = !isAuthenticated;
+        RegisterItem.FlyoutItemIsVisible = !isAuthenticated;
+        LogoutItem.FlyoutItemIsVisible = isAuthenticated;
+    }
+
+
+    private async Task BuildMenuAsync()
+    {
+        Items.Clear();
+
+        AddMenu("Home", "MainPage", typeof(MainPage), "IconDashboard");
+
+        //var user = await authService.GetCurrentUserAsync(); // expose ClaimsPrincipal or equivalent
+        var isAuthenticated = await authService.IsAuthenticatedAsync();
+        var isAdmin = await authService.IsInRoleAsync("Administrators");
+
+        if (!isAuthenticated)
+        {
+            AddMenu("Login", "LoginPage", typeof(LoginPage), "IconPersonBadge");
+            AddMenu("Register", "RegisterPage", typeof(RegisterPage), "IconPerson");
+            return;
+        }
+
+        AddMenu("Counter", "CounterPage", typeof(CounterPage), "IconCounter");
+        AddMenu("Weather", "WeatherPage", typeof(WeatherPage), "IconWeather");
+        AddMenu("Auth", "AuthPage", typeof(AuthPage), "IconLock");
+
+        if (isAdmin)
+        {
+            AddMenu("Admin", "AdminPage", typeof(AdminPage), "IconLock");
+        }
+
+        AddMenu("Logout", "LogoutPage", typeof(LogoutPage), "IconArrowBarLeft");
+    }
+
+    private void AddMenu(string title, string route, Type pageType, string iconResource)
+    {
+        Items.Add(new ShellContent
+        {
+            Title = title,
+            Route = route,
+            Icon = (ImageSource)Application.Current!.Resources[iconResource],
+            ContentTemplate = new DataTemplate(pageType)
+        });
     }
 
     public static async Task DisplaySnackbarAsync(string message)

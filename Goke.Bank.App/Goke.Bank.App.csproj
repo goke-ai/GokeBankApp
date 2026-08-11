@@ -93,10 +93,43 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\Account\LogoutPage.xaml.cs">
+	    <DependentUpon>LogoutPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\CounterPage.xaml.cs">
+	    <DependentUpon>CounterPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\WeatherPage3.xaml.cs">
+	    <DependentUpon>WeatherPage3.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\WeatherPage2.xaml.cs">
+	    <DependentUpon>WeatherPage2.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\Account\LogoutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Account\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\Account\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Admin\AdminPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AuthPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\CounterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\WeatherPage3.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\WeatherPage2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\WeatherPage.xaml">

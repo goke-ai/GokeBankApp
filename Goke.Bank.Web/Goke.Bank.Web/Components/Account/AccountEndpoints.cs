@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Goke.Core.Models;
 using Goke.Services;
-using Goke.Services.Authentication;
+using Goke.Core.Authorization;
 
 namespace Goke.Bank.Web.Components.Auth;
 
