@@ -1,4 +1,4 @@
-namespace Goke.Bank.App;
+namespace Goke.Bank.App.Services;
 
 public static class ServiceHelper
 {

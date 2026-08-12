@@ -67,7 +67,7 @@ public partial class MainPageModel : ObservableObject
 	[RelayCommand]
     private void GoToLogin()
     {
-        Shell.Current.GoToAsync("//LoginPage");
+        Shell.Current.GoToAsync("//Login");
 
     }
 

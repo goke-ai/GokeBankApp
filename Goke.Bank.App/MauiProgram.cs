@@ -4,7 +4,7 @@ using Goke.Bank.App.PageModels;
 using Goke.Bank.App.Services;
 using Goke.Core.Authorization;
 using Goke.Core.Interfaces;
-using Goke.Services;
+using Goke.Core.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Toolkit.Hosting;

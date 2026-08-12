@@ -80,16 +80,15 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="15.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.10" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.11" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.11" />
 		<PackageReference Include="Syncfusion.Maui.Toolkit" Version="1.0.10" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\goke-apps\Goke.Core\Goke.Core.csproj" />
-	  <ProjectReference Include="..\..\goke-apps\Goke.Services\Goke.Services.csproj" />
+	  <ProjectReference Include="..\..\GokeCore\Goke.Core\Goke.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

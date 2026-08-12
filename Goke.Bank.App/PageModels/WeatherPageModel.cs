@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Goke.Bank.App.Services;
 using Goke.Core.Models;
-using Goke.Services;
+using Goke.Core.Services;
 using System.Net.Http.Json;
 
 namespace Goke.Bank.App.PageModels

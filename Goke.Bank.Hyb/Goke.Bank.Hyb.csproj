@@ -75,16 +75,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="10.0.10" />
-        <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="10.0.11" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.11" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="10.0.90" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.10" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.11" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\goke-apps\Goke.Core\Goke.Core.csproj" />
-      <ProjectReference Include="..\..\goke-apps\Goke.Services\Goke.Services.csproj" />
+      <ProjectReference Include="..\..\GokeCore\Goke.Core\Goke.Core.csproj" />
     </ItemGroup>
 
 </Project>

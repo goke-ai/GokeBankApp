@@ -1,3 +1,4 @@
+using Goke.Bank.App.Services;
 using Goke.Core.Authorization;
 using Goke.Core.Interfaces;
 using System.Windows.Input;
@@ -233,7 +234,7 @@ public partial class AuthorizePage : ContentPage
     {
         if (Shell.Current is not null)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            await Shell.Current.GoToAsync("//Login");
         }
     }
 
@@ -242,7 +243,7 @@ public partial class AuthorizePage : ContentPage
         if (Shell.Current is not null)
         {
             await Shell.Current.DisplayAlertAsync("Access Denied", "You do not have permission.", "OK");
-            await Shell.Current.GoToAsync("//MainPage");
+            await Shell.Current.GoToAsync("//Main");
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿using Goke.Bank.Hyb.Services;
 using Goke.Core.Interfaces;
-using Goke.Services;
+using Goke.Core.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;

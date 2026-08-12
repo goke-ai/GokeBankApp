@@ -10,7 +10,6 @@ namespace Goke.Bank.App.PageModels
         int _currentCount = 0;
 
 
-
         [RelayCommand]
         private void IncrementCount()
         {

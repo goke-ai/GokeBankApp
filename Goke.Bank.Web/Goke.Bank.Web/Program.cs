@@ -1,7 +1,6 @@
-using Goke.Bank.Web.Client.Pages;
 using Goke.Bank.Web.Components;
-using Goke.Bank.Web.Components.Auth;
-using Goke.Services;
+using Goke.Bank.Web.Components.Account;
+using Goke.Core.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);

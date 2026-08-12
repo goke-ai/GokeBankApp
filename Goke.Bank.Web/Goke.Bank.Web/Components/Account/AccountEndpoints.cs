@@ -2,11 +2,10 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using Goke.Core.Models;
-using Goke.Services;
+using Goke.Core.Services;
 using Goke.Core.Authorization;
 
-namespace Goke.Bank.Web.Components.Auth;
+namespace Goke.Bank.Web.Components.Account;
 
 public static class AccountEndpoints
 {

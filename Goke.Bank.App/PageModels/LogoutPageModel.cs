@@ -33,7 +33,7 @@ public partial class LogoutPageModel : BasePageModel
                 await shell.RefreshMenuAsync();
             }
 
-            await Shell.Current.GoToAsync("//MainPage", true);
+            await Shell.Current.GoToAsync("//Main", true);
         }
         catch (Exception e)
         {

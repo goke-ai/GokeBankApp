@@ -1,4 +1,4 @@
-namespace Goke.Bank.Web.Components.Auth;
+namespace Goke.Bank.Web.Components.Account;
 
 internal sealed class BlazorLogoutForm
 {

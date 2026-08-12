@@ -1,4 +1,4 @@
-using Goke.Services;
+using Goke.Core.Services;
 
 namespace Goke.Bank.App.Services;
 

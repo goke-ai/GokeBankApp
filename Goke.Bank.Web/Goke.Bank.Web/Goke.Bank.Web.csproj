@@ -8,10 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\goke-apps\Goke.Services\Goke.Services.csproj" />
     <ProjectReference Include="..\..\GokeBankApp.ServiceDefaults\GokeBankApp.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Goke.Bank.Web.Client\Goke.Bank.Web.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.11" />
   </ItemGroup>
 
   <ItemGroup>

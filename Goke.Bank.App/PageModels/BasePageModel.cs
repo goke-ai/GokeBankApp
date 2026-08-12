@@ -28,7 +28,7 @@ public partial class BasePageModel(ModalErrorHandler errorHandler) : ObservableO
 		{
 			IsBusy = true;
 
-            await Task.Delay(2000); // Simulate a delay for the data loading operation
+            //await Task.Delay(2000); // Simulate a delay for the data loading operation
 
             await OnLoadDataAsync();
             
@@ -62,7 +62,7 @@ public partial class BasePageModel(ModalErrorHandler errorHandler) : ObservableO
 		{
 			IsRefreshing = true;
 
-			await Task.Delay(2000); // Simulate a delay for the refresh operation
+			//await Task.Delay(2000); // Simulate a delay for the refresh operation
 
             await LoadData();
 		}

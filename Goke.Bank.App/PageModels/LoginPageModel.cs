@@ -51,14 +51,14 @@ public partial class LoginPageModel(IAuthenticationService authService, ModalErr
             await shell.RefreshMenuAsync();
         }
 
-        await Shell.Current.GoToAsync("//MainPage");
+        await Shell.Current.GoToAsync("//Main");
 
     }
 
     [RelayCommand]
     private async Task Register()
     {
-        await Shell.Current.GoToAsync("//RegisterPage");
+        await Shell.Current.GoToAsync("//Register");
     }
 
 
