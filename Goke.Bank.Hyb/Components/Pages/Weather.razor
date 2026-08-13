@@ -1,0 +1,31 @@
+﻿@page "/weather"
+
+@using Goke.Core.Models
+@using Goke.Core.Services
+
+@inject IHttpClientFactory httpClientFactory
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <WeatherForecastList Forecasts="forecasts" />
+}
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    private HttpClient httpClient => httpClientFactory.CreateClient(BackendApiEndpoints.ClientName);
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = (await httpClient.GetFromJsonAsync<WeatherForecast[]>("api/weather")) ?? Array.Empty<WeatherForecast>();
+    }
+
+}

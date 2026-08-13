@@ -10,7 +10,11 @@
   <ItemGroup>
     <ProjectReference Include="..\..\GokeBankApp.ServiceDefaults\GokeBankApp.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Goke.Bank.Web.Client\Goke.Bank.Web.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Endpoints\" />
   </ItemGroup>
 
 </Project>
