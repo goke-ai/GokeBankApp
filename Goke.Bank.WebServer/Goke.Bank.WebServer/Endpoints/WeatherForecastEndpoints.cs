@@ -1,5 +1,4 @@
 ﻿using Goke.Bank.WebServer.Services;
-using Goke.Core.Models;
 
 namespace Goke.Bank.WebServer.Endpoints
 {

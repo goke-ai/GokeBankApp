@@ -12,7 +12,7 @@
     <ShellContent
     x:Name="HomeItem"
     Title="Home"
-    Icon="{StaticResource IconDashboard}"
+    Icon="{StaticResource IconHome}"
     ContentTemplate="{DataTemplate pages:MainPage}"
     Route="Main" />
 

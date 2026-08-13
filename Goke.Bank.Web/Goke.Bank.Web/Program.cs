@@ -1,5 +1,9 @@
 using Goke.Bank.Web.Components;
 using Goke.Bank.Web.Components.Account;
+using Goke.Bank.Web.Services;
+using Goke.Core.Interfaces;
+using Goke.Core.Options;
+using Goke.Core.Security;
 using Goke.Core.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -47,6 +51,8 @@ builder.Services.AddHttpClient<AuthApiClient>((sp, client) => {
 });
 //-authentication
 
+// Add other services
+builder.Services.AddTransient<IFormFactor, FormFactorService>();
 
 var app = builder.Build();
 

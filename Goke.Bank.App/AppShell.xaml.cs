@@ -1,10 +1,7 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
-using Goke.Bank.App.Pages;
-using Goke.Bank.App.Pages.Account;
-using Goke.Bank.App.Pages.Admin;
 using Goke.Bank.App.Services;
-using Goke.Core.Interfaces;
+using Goke.Core.Security;
 using Font = Microsoft.Maui.Font;
 
 namespace Goke.Bank.App;

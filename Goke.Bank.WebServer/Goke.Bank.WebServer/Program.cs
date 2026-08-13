@@ -1,12 +1,12 @@
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Goke.Bank.WebServer.Client.Pages;
 using Goke.Bank.WebServer.Components;
 using Goke.Bank.WebServer.Components.Account;
 using Goke.Bank.WebServer.Data;
 using Goke.Bank.WebServer.Endpoints;
 using Goke.Bank.WebServer.Services;
+using Goke.Core.Interfaces;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,6 +68,8 @@ builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSe
 
 //di app services
 builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+// Add other services
+builder.Services.AddTransient<IFormFactor, FormFactorService>();
 
 
 var app = builder.Build();

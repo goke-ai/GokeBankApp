@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
-using Goke.Core.Models;
+using Goke.Core.Authentication;
 
 namespace Goke.Bank.App.Services
 {

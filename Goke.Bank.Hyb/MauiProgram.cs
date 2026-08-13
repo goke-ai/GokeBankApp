@@ -1,5 +1,7 @@
 ﻿using Goke.Bank.Hyb.Services;
 using Goke.Core.Interfaces;
+using Goke.Core.Options;
+using Goke.Core.Security;
 using Goke.Core.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Configuration;
@@ -61,6 +63,9 @@ public static class MauiProgram
         builder.Services.AddScoped<IAuthenticationService>(s => s.GetRequiredService<MauiAuthenticationStateProvider>());
 
         //-authentication
+
+        // Add other services
+        builder.Services.AddTransient<IFormFactor, FormFactorService>();
 
 
         builder.Services.AddMauiBlazorWebView();

@@ -1,6 +1,5 @@
 using Goke.Bank.App.Controls;
 using Goke.Bank.App.PageModels;
-using Goke.Core.Authorization;
 
 namespace Goke.Bank.App.Pages;
 

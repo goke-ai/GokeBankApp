@@ -4,6 +4,8 @@ using Goke.Bank.App.PageModels;
 using Goke.Bank.App.Services;
 using Goke.Core.Authorization;
 using Goke.Core.Interfaces;
+using Goke.Core.Options;
+using Goke.Core.Security;
 using Goke.Core.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -113,7 +115,10 @@ public static class MauiProgram
                 policy.RequirePermission("Profile.Edit"));
         });
 
-        
+        // Add other services
+        builder.Services.AddTransient<IFormFactor, FormFactorService>();
+
+
         // models
         builder.Services.AddSingleton<ModalErrorHandler>();
 

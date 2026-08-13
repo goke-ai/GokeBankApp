@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net.Http.Json;
 using System.Security.Claims;
-using System.Text;
 using Goke.Core.Enums;
-using Goke.Core.Interfaces;
-using Goke.Core.Models;
-using Goke.Core.Services;
 using Goke.Core.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using Goke.Core.Security;
+using Goke.Core.Authentication;
 
 namespace Goke.Bank.Hyb.Services
 {

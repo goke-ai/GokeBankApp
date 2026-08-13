@@ -1,6 +1,6 @@
 using Goke.Bank.App.Services;
 using Goke.Core.Authorization;
-using Goke.Core.Interfaces;
+using Goke.Core.Security;
 using System.Windows.Input;
 
 namespace Goke.Bank.App.Controls;

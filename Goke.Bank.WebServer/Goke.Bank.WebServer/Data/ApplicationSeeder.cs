@@ -1,7 +1,7 @@
-﻿using Goke.Core.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Goke.Core.Extensions;
+using Goke.Core.Options;
 
 namespace Goke.Bank.WebServer.Data;
 

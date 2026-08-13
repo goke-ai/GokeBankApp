@@ -92,6 +92,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\FormFactorView.xaml.cs">
+	    <DependentUpon>FormFactorView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\Account\LogoutPage.xaml.cs">
 	    <DependentUpon>LogoutPage.xaml</DependentUpon>
 	  </Compile>
@@ -107,6 +110,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Controls\FormFactorView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Account\LogoutPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

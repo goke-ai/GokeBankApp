@@ -88,6 +88,12 @@
          Size="{StaticResource size240}" />
 
 
+    <FontImageSource x:Key="IconHome"
+                 Glyph="{x:Static f:FluentUI.home_24_regular}"
+                 FontFamily="{x:Static f:FluentUI.FontFamily}"
+                 Color="{AppThemeBinding Light={StaticResource DarkOnLightBackground}, Dark={StaticResource LightOnDarkBackground}}"
+                 Size="{StaticResource IconSize}" />
+
     <FontImageSource x:Key="IconDashboard"
                  Glyph="{x:Static f:FluentUI.diagram_24_regular}"
                  FontFamily="{x:Static f:FluentUI.FontFamily}"

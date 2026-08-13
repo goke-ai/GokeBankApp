@@ -2,7 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Goke.Core.Models;
 using Goke.Bank.App.Services;
-using Goke.Core.Interfaces;
+using Goke.Core.Security;
 
 namespace Goke.Bank.App.PageModels;
 

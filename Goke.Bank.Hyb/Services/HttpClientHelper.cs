@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Goke.Bank.Hyb.Services;
+﻿namespace Goke.Bank.Hyb.Services;
 
 /// <summary>
 /// Helper class to manage HttpClient configuration and Url endpoint addresses.

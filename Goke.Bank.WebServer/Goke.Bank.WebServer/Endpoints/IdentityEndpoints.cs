@@ -1,8 +1,7 @@
 ﻿using Goke.Bank.WebServer.Data;
-using Goke.Core.Models;
+using Goke.Core.Authentication;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using System.Text.Json.Serialization;
 
 namespace Goke.Bank.WebServer.Endpoints
 {
