@@ -62,37 +62,50 @@
 
                 <AuthorizeView>
                     <Authorized>
-                        <div class="nav-item">
-                            <NavLink class="nav-link" href="Account/Manage">
-                                <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span>
-                                <span>@context.User.Identity?.Name</span>
-                            </NavLink>
-                        </div>
+                        <div class="nav-item nav-dropdown-container">
+                            <details class="nav-dropdown">
+                                <summary class="nav-link nav-dropdown-toggle">
+                                    <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span>
+                                    <span>@(context.User.Identity?.Name ?? "Account")</span>
+                                </summary>
 
-                        <div class="nav-item">
-                            <form action="Account/Logout" method="post">
-                                <AntiforgeryToken />
-                                <input type="hidden" name="ReturnUrl" value="@currentUrl" />
-                                <button type="submit" class="nav-link nav-button">
-                                    <span class="bi bi-arrow-bar-left-nav-menu" aria-hidden="true"></span>
-                                    <span>Logout</span>
-                                </button>
-                            </form>
+                                <div class="dropdown-menu">
+                                    <NavLink class="nav-link" href="Account/Manage">
+                                        <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span>
+                                        <span>Manage</span>
+                                    </NavLink>
+                                    <form action="Account/Logout" method="post">
+                                        <AntiforgeryToken />
+                                        <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                                        <button type="submit" class="nav-link nav-button">
+                                            <span class="bi bi-arrow-bar-left-nav-menu" aria-hidden="true"></span>
+                                            <span>Logout</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </details>
                         </div>
                     </Authorized>
                     <NotAuthorized>
-                        <div class="nav-item">
-                            <NavLink class="nav-link" href="Account/Register">
-                                <span class="bi bi-person-nav-menu" aria-hidden="true"></span>
-                                <span>Register</span>
-                            </NavLink>
-                        </div>
+                        <div class="nav-item nav-dropdown-container">
+                            <details class="nav-dropdown">
+                                <summary class="nav-link nav-dropdown-toggle">
+                                    <span class="bi bi-person-nav-menu" aria-hidden="true"></span>
+                                    <span>Account</span>
+                                </summary>
 
-                        <div class="nav-item">
-                            <NavLink class="nav-link" href="Account/Login">
-                                <span class="bi bi-person-badge-nav-menu" aria-hidden="true"></span>
-                                <span>Login</span>
-                            </NavLink>
+                                <div class="dropdown-menu">
+                                    <NavLink class="nav-link" href="Account/Login">
+                                        <span class="bi bi-person-badge-nav-menu" aria-hidden="true"></span>
+                                        <span>Login</span>
+                                    </NavLink>
+
+                                    <NavLink class="nav-link" href="Account/Register">
+                                        <span class="bi bi-person-nav-menu" aria-hidden="true"></span>
+                                        <span>Register</span>
+                                    </NavLink>
+                                </div>
+                            </details>
                         </div>
                     </NotAuthorized>
                 </AuthorizeView>

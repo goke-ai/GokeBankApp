@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8" />
@@ -19,6 +19,13 @@
     <ReconnectModal />
     <script src="@Assets["_framework/blazor.web.js"]"></script>
     <script src="@Assets["Components/Account/Shared/PasskeySubmit.razor.js"]" type="module"></script>
+    <script>
+            window.themeManager = {
+                setTheme(theme) {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            };
+    </script>
 </body>
 
 </html>
