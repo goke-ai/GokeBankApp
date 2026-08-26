@@ -1,9 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
-@inject IJSRuntime JS
-
 <div class="page">
-    <Navbar IsSidebar="false" IsDarkTheme="isDarkTheme" IsDarkThemeChanged="OnIsDarkThemeChanged" />
+    <Navbar IsSidebar="false" IsDarkTheme="isDarkTheme" />
 
     <main>
         <article class="content px-4">
@@ -21,27 +19,5 @@
 @code {
     private bool isDarkTheme = true;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await ApplyThemeAsync();
-        }
-    }
-
-    private async Task OnIsDarkThemeChanged(bool value)
-    {
-        if (isDarkTheme == value)
-        {
-            return;
-        }
-
-        isDarkTheme = value;
-        await ApplyThemeAsync();
-    }
-
-    private ValueTask ApplyThemeAsync()
-    {
-        return JS.InvokeVoidAsync("themeManager.setTheme", isDarkTheme ? "dark" : "light");
-    }
+    
 }

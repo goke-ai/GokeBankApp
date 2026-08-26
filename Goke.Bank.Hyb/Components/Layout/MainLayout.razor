@@ -9,6 +9,7 @@
     <main>
         <div class="top-row px-4">
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">@currentTheme</a>
         </div>
 
         <article class="content px-4">
@@ -19,11 +20,54 @@
 
 @code {
     private bool isDarkTheme = true;
+    string currentTheme = "dark";
+    private DotNetObjectReference<MainLayout>? objRef;
+
+    protected override async Task OnInitializedAsync()
+    {
+    }
+
+    [JSInvokable]
+    public async Task OnThemeChanged(string theme)
+    {
+        currentTheme = theme;
+        isDarkTheme = currentTheme == "dark";
+
+        await ApplyThemeAsync();
+
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        objRef?.Dispose();
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
+            // // get the current theme from local storage
+            // var theme = await JS.InvokeAsync<string>("themeManager.getStorageTheme");
+            // if (string.IsNullOrEmpty(theme))
+            // {
+            //     currentTheme = "dark";
+            // }
+            // else
+            // {
+            //     currentTheme = theme;
+            // }
+
+            // isDarkTheme = currentTheme == "dark";
+            // Get initial theme
+            currentTheme = await JS.InvokeAsync<string>("themeManager.getSystemTheme");
+
+            isDarkTheme = currentTheme == "dark";
+
+            // Register for theme change events
+            objRef = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("themeManager.registerThemeChangeHandler", objRef);
+
             await ApplyThemeAsync();
         }
     }
@@ -36,11 +80,17 @@
         }
 
         isDarkTheme = value;
+        currentTheme = isDarkTheme ? "dark" : "light";
+
+        // // set the theme in local storage
+        // await JS.InvokeVoidAsync("themeManager.setStorageTheme", currentTheme);
+
         await ApplyThemeAsync();
     }
 
     private ValueTask ApplyThemeAsync()
-    {
-        return JS.InvokeVoidAsync("themeManager.setTheme", isDarkTheme ? "dark" : "light");
+    {    
+        // Call the JavaScript function to apply the theme
+        return JS.InvokeVoidAsync("themeManager.setTheme", currentTheme);
     }
 }

@@ -9,4 +9,7 @@ builder.AddProject<Projects.Goke_Bank_Hyb>("goke-bank-hyb");
 builder.AddProject<Projects.Goke_Bank_App>("goke-bank-app");
 
 
+builder.AddProject<Projects.BlazorApp1>("blazorapp1");
+
+
 builder.Build().Run();
