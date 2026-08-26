@@ -66,6 +66,7 @@ public static class MauiProgram
 
         // Add other services
         builder.Services.AddTransient<IFormFactor, FormFactorService>();
+        builder.Services.AddSingleton<ThemeService>();
 
 
         builder.Services.AddMauiBlazorWebView();

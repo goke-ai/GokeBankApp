@@ -1,0 +1,29 @@
+
+<div class="btn-group" role="group" aria-label="Theme Switch">
+    <button class="btn @(IsDarkTheme ? "btn-outline-secondary" : "btn-secondary")" style="border-radius: 40% 0 0 40%" @onclick="OnLightTheme">
+        <span class="bi bi-cloud-sun-fill-nav-menu" aria-hidden="true"></span>
+    </button>
+
+    <button style="border-radius: 0 40% 40% 0" class="btn @(IsDarkTheme ? "btn-secondary" : "btn-outline-secondary")" @onclick="OnDarkTheme">
+        <span class="bi bi-cloud-moon-fill-nav-menu" aria-hidden="true"></span>
+    </button>
+</div>
+
+@code {
+    [Parameter]
+    public bool IsDarkTheme { get; set; } = false;
+    [Parameter]
+    public EventCallback<bool> IsDarkThemeChanged { get; set; }
+
+    private void OnLightTheme()
+    {
+        IsDarkTheme = false;
+        IsDarkThemeChanged.InvokeAsync(IsDarkTheme);
+    }
+
+    private void OnDarkTheme()
+    {
+        IsDarkTheme = true;
+        IsDarkThemeChanged.InvokeAsync(IsDarkTheme);
+    }
+}

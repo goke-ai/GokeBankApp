@@ -1,0 +1,13 @@
+﻿@using Goke.Bank.Hyb.Services
+@inject ThemeService ThemeService
+
+<button class="btn btn-outline-secondary" @onclick="Toggle">
+    @(ThemeService.CurrentTheme == "light" ? "🌙 Dark Mode" : "☀️ Light Mode")
+</button>
+
+@code {
+    private async Task Toggle()
+    {
+        await ThemeService.ToggleThemeAsync();
+    }
+}
