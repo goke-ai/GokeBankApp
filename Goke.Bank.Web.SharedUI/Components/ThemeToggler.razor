@@ -1,5 +1,4 @@
-﻿@using Goke.Bank.Hyb.Services
-@inject ThemeService ThemeService
+﻿@inject Goke.Bank.Web.SharedUI.Services.ThemeService ThemeService
 
 <button class="btn btn-outline-secondary" @onclick="Toggle">
     @(ThemeService.CurrentTheme == "light" ? "🌙 Dark Mode" : "☀️ Light Mode")

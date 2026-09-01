@@ -3,9 +3,8 @@
 @implements IDisposable
 
 @inject NavigationManager NavigationManager
-@inject IJSRuntime JS
 
-@rendermode InteractiveServer
+
 @if (IsSidebar == true)
 {
     <div class="navbar-toggler-wrapper navbar bg-body-tertiary">
@@ -144,7 +143,7 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             
-            <ThemeControl IsDarkTheme="IsDarkTheme" IsDarkThemeChanged="OnIsDarkThemeChanged" />
+            <ThemeControl CurrentTheme="currentTheme" IsDarkTheme="IsDarkTheme" IsDarkThemeChanged="IsDarkThemeChanged" @rendermode="InteractiveAuto" />
         </div>
     </div>
 </nav>
@@ -158,7 +157,6 @@
     public EventCallback<bool> IsDarkThemeChanged { get; set; }
 
     string currentTheme = "dark";
-    private DotNetObjectReference<Navbar>? objRef;
 
     private string? currentUrl;
 
@@ -177,73 +175,10 @@
     public void Dispose()
     {
         NavigationManager.LocationChanged -= OnLocationChanged;
+    }     
+   
 
-        //
-        objRef?.Dispose();
-    }
-        
+    
 
-    [JSInvokable]
-    public async Task OnThemeChanged(string theme)
-    {
-        currentTheme = theme;
-        IsDarkTheme = currentTheme == "dark";
-
-        await ApplyThemeAsync();
-
-        StateHasChanged();
-    }    
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            // // get the current theme from local storage
-            // var theme = await JS.InvokeAsync<string>("themeManager.getStorageTheme");
-            // if (string.IsNullOrEmpty(theme))
-            // {
-            //     currentTheme = "dark";
-            // }
-            // else
-            // {
-            //     currentTheme = theme;
-            // }
-
-            // isDarkTheme = currentTheme == "dark";
-            //
-            // Get initial theme
-            currentTheme = await JS.InvokeAsync<string>("themeManager.getSystemTheme");
-
-            IsDarkTheme = currentTheme == "dark";
-
-            // Register for theme change events
-            objRef = DotNetObjectReference.Create(this);
-            await JS.InvokeVoidAsync("themeManager.registerThemeChangeHandler", objRef);
-
-            //
-            await ApplyThemeAsync();
-        }
-    }
-
-    private async Task OnIsDarkThemeChanged(bool value)
-    {
-        if (IsDarkTheme == value)
-        {
-            return;
-        }
-
-        IsDarkTheme = value;
-        currentTheme = IsDarkTheme ? "dark" : "light";
-
-        // // set the theme in local storage
-        // await JS.InvokeVoidAsync("themeManager.setStorageTheme", currentTheme);
-
-        await ApplyThemeAsync();
-    }
-
-    private ValueTask ApplyThemeAsync()
-    {
-        // Call the JavaScript function to apply the theme
-        return JS.InvokeVoidAsync("themeManager.setTheme", currentTheme);
-    }
+    
 }

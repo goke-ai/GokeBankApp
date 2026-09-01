@@ -1,5 +1,5 @@
 .page {
-    min-height: 100vh;
+    min-height: var(--min-height);
     display: flex;
     flex-direction: column;
 /*    background-color: #f8f9fb;*/
@@ -9,9 +9,75 @@ main {
     flex: 1;
 }
 
+.sidebar {
+    width: 200px;
+    height: 0;
+}
+
 .content {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+}
+
+.top-row {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    opacity: 0.95;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    padding-left: 5rem !important;
+}
+
+    .top-row ::deep a,
+    .top-row ::deep .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+        .top-row ::deep a:hover,
+        .top-row ::deep .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        .top-row ::deep a:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+@media (max-width: 640.98px) {
+    .top-row {
+        justify-content: space-between;
+    }
+
+        .top-row ::deep a,
+        .top-row ::deep .btn-link {
+            margin-left: 0;
+        }
+}
+
+@media (min-width: 641px) {
+    .sidebar {
+        --position: absolute;
+    }
+
+    .top-row {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+        .top-row.auth ::deep a:first-child {
+            flex: 1;
+            text-align: right;
+            width: 0;
+        }
+
+    .top-row,
+    article {
+        padding-right: 1.5rem !important;
+    }
 }
 
 @media (min-width: 768px) {

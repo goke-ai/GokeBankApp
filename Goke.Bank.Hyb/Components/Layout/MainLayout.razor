@@ -1,21 +1,36 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <Navbar IsSidebar="true" IsDarkTheme="isDarkTheme"  />
+<div class="page" style="@((isSidebar == false) ? "--min-height: 100vh" : "")">
+    <div class="@(isSidebar ? "sidebar" : "")">
+        <Navbar IsSidebar="isSidebar" IsDarkTheme="isDarkTheme" IsDarkThemeChanged="OnIsDarkThemeChanged" />
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
+        @if (isSidebar)
+        {
+            <div class="top-row px-4">
+                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            </div>
+        }
+        <article class="@(!isSidebar ? "content px-4" : "px-4")">
             @Body
         </article>
     </main>
 </div>
 
 @code {
+    private bool isSidebar = true;
     private bool isDarkTheme = true;    
+
+    
+    private async Task OnIsDarkThemeChanged(bool value)
+    {
+        if (isDarkTheme == value)
+        {
+            return;
+        }
+
+        isDarkTheme = value;
+        //currentTheme = isDarkTheme ? "dark" : "light";
+    }
 }

@@ -23,6 +23,7 @@ else
     <WeatherForecastList Forecasts="forecasts" />
 }
 
+
 @code {
     private WeatherForecast[]? forecasts;
 
@@ -33,5 +34,4 @@ else
 
         forecasts = (await WeatherForecastService.GetAllWeatherForecasts()).ToArray();
     }
-
 }

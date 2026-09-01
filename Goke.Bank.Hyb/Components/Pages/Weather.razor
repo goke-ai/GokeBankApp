@@ -9,6 +9,14 @@
 
 <p>This component demonstrates showing data.</p>
 
+@if (errorMessage != null)
+{
+<div class="alert alert-danger" role="alert">
+    @errorMessage
+</div>
+}
+
+
 @if (forecasts == null)
 {
     <p><em>Loading...</em></p>
@@ -20,12 +28,30 @@ else
 
 @code {
     private WeatherForecast[]? forecasts;
+    private string? errorMessage;
 
     private HttpClient httpClient => httpClientFactory.CreateClient(BackendApiEndpoints.ClientName);
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = (await httpClient.GetFromJsonAsync<WeatherForecast[]>("api/weather")) ?? Array.Empty<WeatherForecast>();
+        errorMessage = null; // Clear any previous error message
+
+        try
+        {
+            await LoadWeatherForecastsAsync();
+        }
+        catch (Exception ex)
+        {
+            // Handle the exception (e.g., log it, show an error message, etc.)
+            errorMessage = $"Error loading weather forecasts: {ex.Message}";
+            Console.Error.WriteLine($"Error loading weather forecasts: {ex.Message}");
+            
+            forecasts = Array.Empty<WeatherForecast>(); // Set to empty array on error
+        }
     }
 
+    private async Task LoadWeatherForecastsAsync()
+    {
+        forecasts = (await httpClient.GetFromJsonAsync<WeatherForecast[]>("api/weather")) ?? Array.Empty<WeatherForecast>();
+    }
 }

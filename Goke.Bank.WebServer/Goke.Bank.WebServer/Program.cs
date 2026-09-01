@@ -102,7 +102,10 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(Goke.Bank.WebServer.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(
+        typeof(Goke.Bank.WebServer.Client._Imports).Assembly,
+        typeof(Goke.Bank.Web.SharedUI._Imports).Assembly
+    );
 
 //+authentication
 // Needed for external clients to log in

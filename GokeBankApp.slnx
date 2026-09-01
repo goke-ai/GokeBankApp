@@ -11,7 +11,7 @@
   <Project Path="Goke.Bank.Hyb/Goke.Bank.Hyb.csproj">
     <Deploy Solution="Debug|*" />
   </Project>
-  <Project Path="Goke.Bank.Web.ShareUI/Goke.Bank.Web.ShareUI.csproj" />
+  <Project Path="Goke.Bank.Web.SharedUI/Goke.Bank.Web.SharedUI.csproj" Id="79de6d68-b972-4482-9e05-6e0aca1bc007" />
   <Project Path="Goke.Bank.Web/Goke.Bank.Web.Client/Goke.Bank.Web.Client.csproj" />
   <Project Path="Goke.Bank.Web/Goke.Bank.Web/Goke.Bank.Web.csproj" />
   <Project Path="Goke.Bank.WebServer/Goke.Bank.WebServer.Client/Goke.Bank.WebServer.Client.csproj" />

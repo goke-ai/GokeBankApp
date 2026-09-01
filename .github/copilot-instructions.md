@@ -5,4 +5,5 @@
 
 ## User Interface Guidelines
 - For Goke.Bank.Hyb navigation changes, present account items as a flyout dropdown menu, not an inline expanded submenu.
-- Use Bootstrap's data-bs-theme attribute on the html tag for theme switching in the Hyb project.
+- Use Bootstrap's data-bs-theme attribute on the html tag for theme switching in the Hyb project. 
+- Ensure theme persistence across page navigation in the Blazor WebServer app; enhance navigation/static SSR to prevent resetting the html theme between pages.

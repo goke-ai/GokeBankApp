@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\GokeCore\Goke.Core\Goke.Core.csproj" />
-    <ProjectReference Include="..\..\Goke.Bank.Web.ShareUI\Goke.Bank.Web.ShareUI.csproj" />
+    <ProjectReference Include="..\..\Goke.Bank.Web.SharedUI\Goke.Bank.Web.SharedUI.csproj" />
   </ItemGroup>
 
 </Project>
