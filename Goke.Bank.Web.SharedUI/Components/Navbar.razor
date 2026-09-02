@@ -1,9 +1,6 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
-@using Microsoft.AspNetCore.Components.Routing
-@implements IDisposable
+﻿@implements IDisposable
 
 @inject NavigationManager NavigationManager
-@inject IJSRuntime JS
 
 
 @if (IsSidebar == true)
@@ -143,7 +140,7 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-
+            
             <ThemeControl CurrentTheme="currentTheme" IsDarkTheme="IsDarkTheme" IsDarkThemeChanged="IsDarkThemeChanged" />
         </div>
     </div>
@@ -158,6 +155,7 @@
     public EventCallback<bool> IsDarkThemeChanged { get; set; }
 
     string currentTheme = "dark";
+
     private string? currentUrl;
 
     protected override async Task OnInitializedAsync()
@@ -175,8 +173,10 @@
     public void Dispose()
     {
         NavigationManager.LocationChanged -= OnLocationChanged;
-    }       
+    }     
+   
+
     
 
-
+    
 }

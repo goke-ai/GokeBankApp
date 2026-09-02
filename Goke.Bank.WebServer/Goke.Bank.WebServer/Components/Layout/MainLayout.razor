@@ -2,10 +2,10 @@
 
 <div class="page" style="@((isSidebar == false) ? "--min-height: 100vh" : "")">
     <div class="@(isSidebar ? "sidebar" : "")">
-        <Navbar IsSidebar="isSidebar"
+        <Navbar @rendermode="InteractiveAuto"
+                IsSidebar="isSidebar"
                 IsDarkTheme="isDarkTheme"
-                IsDarkThemeChanged="OnIsDarkThemeChanged"
-               />
+                IsDarkThemeChanged="OnIsDarkThemeChanged" />
     </div>
 
     <main>

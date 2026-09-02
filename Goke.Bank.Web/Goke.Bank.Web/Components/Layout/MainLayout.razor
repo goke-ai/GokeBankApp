@@ -1,14 +1,18 @@
-﻿@inherits LayoutComponentBase
+﻿@using Goke.Bank.Web.SharedUI.Components
+@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+<div class="page" style="@((isSidebar == false) ? "--min-height: 100vh" : "")">
+    <div class="@(isSidebar ? "sidebar" : "")">
+        <Navbar IsSidebar="true" IsDarkTheme="true" @rendermode="InteractiveAuto"/>
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+        @if (isSidebar)
+        {
+            <div class="top-row px-4">
+                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            </div>
+        }
 
         <article class="content px-4">
             @Body
@@ -21,3 +25,20 @@
     <a href="." class="reload">Reload</a>
     <span class="dismiss">🗙</span>
 </div>
+
+@code {
+    private bool isSidebar = true;
+    private bool isDarkTheme = true;
+
+    
+    private async Task OnIsDarkThemeChanged(bool value)
+    {
+        if (isDarkTheme == value)
+        {
+            return;
+        }
+
+        isDarkTheme = value;
+        //currentTheme = isDarkTheme ? "dark" : "light";
+    }
+}

@@ -1,4 +1,4 @@
-﻿@page "/Account/logout"
+﻿@page "/Account/Logout"
 @using Goke.Bank.Hyb.Services
 
 @inject NavigationManager navigationManager
@@ -9,6 +9,6 @@
     protected override void OnInitialized()
     {
         AuthStateProvider.Logout();
-        navigationManager.NavigateTo("/login");
+        navigationManager.NavigateTo("/Account/login");
     }
 }

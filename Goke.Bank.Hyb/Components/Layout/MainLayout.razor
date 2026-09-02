@@ -2,7 +2,9 @@
 
 <div class="page" style="@((isSidebar == false) ? "--min-height: 100vh" : "")">
     <div class="@(isSidebar ? "sidebar" : "")">
-        <Navbar IsSidebar="isSidebar" IsDarkTheme="isDarkTheme" IsDarkThemeChanged="OnIsDarkThemeChanged" />
+        <Navbar IsSidebar="isSidebar"
+                IsDarkTheme="isDarkTheme"
+                IsDarkThemeChanged="OnIsDarkThemeChanged" />
     </div>
 
     <main>
@@ -20,7 +22,7 @@
 
 @code {
     private bool isSidebar = true;
-    private bool isDarkTheme = true;    
+    private bool isDarkTheme = true;
 
     
     private async Task OnIsDarkThemeChanged(bool value)
